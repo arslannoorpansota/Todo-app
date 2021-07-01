@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CreateTodos from "./CreateTodo";
+import ListTodos from "./ListTodos";
 
 interface Todo {
     id: number,
@@ -9,6 +10,8 @@ interface Todo {
 export function Content() {
     const [lastId, setLastId] = useState(0);
     const [todos, setTodos] = useState<Todo[]>([]);
+    const [currentTodo, setCurrentTodo] = useState("");
+
 
     useEffect(() => {
         const savedTodos = localStorage.getItem("todos");
@@ -23,7 +26,7 @@ export function Content() {
         localStorage.setItem("todos", JSON.stringify(todos))
     }, [todos])
 
-    function deleteitem(id: number) {
+    function deleteItem(id: number) {
         const removeItem = todos.filter((todo: Todo) => {
             return todo.id !== id;
         });
@@ -53,7 +56,8 @@ export function Content() {
                 My Todos
             </header>
 
-            <CreateTodos addItem={addItem} />
+            <CreateTodos addItem={addItem} currentTodo={currentTodo} setCurrentTodo={setCurrentTodo}/>
+            <ListTodos deleteItem={deleteItem} todos={todos} setTodos={setTodos}/>
 
 
         </div>

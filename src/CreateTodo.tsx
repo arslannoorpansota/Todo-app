@@ -2,11 +2,13 @@ import React, { useState } from "react"
 
 interface Props {
     addItem: (todo: string) => void;
+    currentTodo: string;
+    setCurrentTodo: (task: string) => void
 }
 
 export default function CreateTodos(props: Props) {
-    const [currentTodo, setCurrentTodo] = useState("");
-
+    let currentTodo = props.currentTodo
+    let setCurrentTodo = props.setCurrentTodo
     function addTodo() {
         props.addItem(currentTodo);
         setCurrentTodo("");
