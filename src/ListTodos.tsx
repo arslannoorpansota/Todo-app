@@ -1,21 +1,18 @@
 import React from "react"
-// import {currentTodo} from "./CreateTodo";
 
 interface Todo {
-    id: number,
-    text: string,
+    id: number;
+    text: string;
 }
+
 interface Props {
-    deleteItem:(id: number) => void;
+    deleteItem: (id: number) => void;
     todos: Todo[];
     setTodos: (todos: Todo[]) => void;
 
 }
 
-export default function ListTodos(props: Props) {
-    let deleteItem = props.deleteItem
-    let todos = props.todos
-    let setTodos = props.setTodos
+export default function ListTodos({ deleteItem, todos, setTodos }: Props) {
     return (
         <div className="bg-gray-100 rounded py-8 px-2 w-64">
             <ul className="space-y-8">
