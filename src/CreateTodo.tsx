@@ -10,14 +10,16 @@ export default function CreateTodos(props: Props) {
     let currentTodo = props.currentTodo
     let setCurrentTodo = props.setCurrentTodo
     function addTodo() {
+        if (currentTodo != ""){
         props.addItem(currentTodo);
         setCurrentTodo("");
+        }
     }
     return (
         <div className="flex relative items-center">
             <div className="">
                 <input placeholder="new task" value={currentTodo} onKeyUp={(e) => e.key == "Enter" && addTodo()} onChange={(e) => setCurrentTodo(e.target.value)}
-                    className="input p-2 pr-12 rounded"></input>
+                    className="input p-2 pr-12 focus:outline-none rounded"></input>
             </div>
 
             <div className="absolute right-2">

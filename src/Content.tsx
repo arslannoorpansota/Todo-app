@@ -11,6 +11,7 @@ export function Content() {
     const [lastId, setLastId] = useState(0);
     const [todos, setTodos] = useState<Todo[]>([]);
     const [currentTodo, setCurrentTodo] = useState("");
+    const [editTodo, setEditTodo] = useState("");
 
 
     useEffect(() => {
@@ -37,17 +38,11 @@ export function Content() {
         setTodos([...todos, { id: lastId + 1, text }]);
         setLastId(lastId + 1);
     }
-    // function do_update(index) {
-    //     newtodos = [...todos];
-    //     newtodos[index].text = update.value;
-    //     settodos(newtodos);
-    //     seteditMode(false)
-    // }
-    // function do_update(index) {
-    //     newtodos = [...todos];
-    //     newtodos[index].editMode = true;
-    //     settodos(newtodos);
-    // }
+    function do_update() {
+        setTodos([...todos, { id: lastId + 1, text: editTodo }]);
+        setEditTodo("");
+    }
+  
 
 
     return (
@@ -57,7 +52,7 @@ export function Content() {
             </header>
 
             <CreateTodos addItem={addItem} currentTodo={currentTodo} setCurrentTodo={setCurrentTodo}/>
-            <ListTodos deleteItem={deleteItem} todos={todos} setTodos={setTodos}/>
+            <ListTodos deleteItem={deleteItem} todos={todos} setTodos={setTodos} currentTodo={currentTodo}/>
 
 
         </div>
