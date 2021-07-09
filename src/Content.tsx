@@ -3,8 +3,9 @@ import CreateTodos from "./CreateTodo";
 import ListTodos from "./ListTodos";
 
 interface Todo {
-    id: number,
-    text: string,
+    id: number;
+    text: string;
+    isDone: boolean;
 }
 
 export function Content() {
@@ -35,13 +36,10 @@ export function Content() {
     }
 
     function addItem(text: string) {
-        setTodos([...todos, { id: lastId + 1, text }]);
+        setTodos([...todos, { id: lastId + 1, text , isDone: false}]);
         setLastId(lastId + 1);
     }
-    function do_update() {
-        setTodos([...todos, { id: lastId + 1, text: editTodo }]);
-        setEditTodo("");
-    }
+  
   
 
 
